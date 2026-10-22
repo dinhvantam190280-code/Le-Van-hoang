@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>304GAMER - Kho Mod Game</title>
+  <style>
+    /* Cài đặt chung */
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Logo */
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      margin-top: 20px;
+    }
+    .logo {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #ff0055, #00d2ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+    .subtitle {
+      color: #888;
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-top: 5px;
+    }
+
+    /* Khung chứa các game */
+    .game-container {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    /* Thẻ Game (Dạng thả xuống) */
+    details {
+      background: #151515;
+      border: 1px solid #333;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    details[open] {
+      border-color: #00d2ff;
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+    }
+
+    summary {
+      padding: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      list-style: none; /* Ẩn mũi tên mặc định */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #1a1a1a;
+      transition: background 0.2s;
+    }
+
+    summary:hover {
+      background: #222;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    /* Dấu cộng/trừ */
+    summary::after {
+      content: '+';
+      font-size: 24px;
+      color: #00d2ff;
+      font-weight: bold;
+    }
+    details[open] summary::after {
+      content: '-';
+    }
+
+    /* Khu vực chứa các nút tải */
+    .download-area {
+      padding: 15px;
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px solid #333;
+    }
+
+    /* Nút bấm tải */
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      box-sizing: border-box;
+      transition: transform 0.1s, opacity 0.2s;
+    }
+    
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    /* Màu riêng cho từng game */
+    .btn-ff { background: linear-gradient(90deg, #ff9900, #ff5500); }
+    .btn-lq { background: linear-gradient(90deg, #0055ff, #00d2ff); }
+    .btn-pubg { background: linear-gradient(90deg, #ffd700, #ff8c00); }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #555;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1 class="logo">304GAMER</h1>
+    <div class="subtitle">KHO MOD MENU PREMIUM</div>
+  </div>
+
+  <div class="game-container">
+
+    <!-- GAME 1: FREE FIRE (1 Bản) -->
+    <details>
+      <summary>🔥 Free Fire</summary>
+      <div class="download-area">
+        <a href="LINK_TAI_FF_CUA_BAN" class="btn btn-ff">Tải Bản Mod FF (Full Menu)</a>
+      </div>
+    </details>
+
+    <!-- GAME 2: LIÊN QUÂN (4 Bản) -->
+    <details>
+      <summary>⚔️ Liên Quân Mobile</summary>
+      <div class="download-area">
+        <a href="LINK_LQ_BAN_1" class="btn btn-lq">Bản 1: Map Hack & Skin</a>
+        <a href="LINK_LQ_BAN_2" class="btn btn-lq">Bản 2: Drone View</a>
+        <a href="LINK_LQ_BAN_3" class="btn btn-lq">Bản 3: Aim Skill</a>
+        <a href="LINK_LQ_BAN_4" class="btn btn-lq">Bản 4: Full Mod VIP</a>
+      </div>
+    </details>
+
+    <!-- GAME 3: PUBG MOBILE (2 Bản) -->
+    <details>
+      <summary>🎯 PUBG Mobile</summary>
+      <div class="download-area">
+        <a href="LINK_PUBG_BAN_1" class="btn btn-pubg">Bản 1: Aimbot & ESP</a>
+        <a href="LINK_PUBG_BAN_2" class="btn btn-pubg">Bản 2: No Recoil & Antiban</a>
+      </div>
+    </details>
+
+  </div>
+
+  <div class="footer">
+    &copy; 2024 304GAMER. Mọi quyền được bảo lưu.
+  </div>
+
+</body>
+</html>
