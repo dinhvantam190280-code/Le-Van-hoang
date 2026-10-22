@@ -161,13 +161,13 @@
 </head>
 <body>
 
-  <!-- Trình phát nhạc ẩn -->
-  <audio id="bg-music" loop>
-    <source src="https://docs.google.com/uc?export=download&id=10LwGngdaxs5ZXEhmE3LFr1qQdXt5RJMV" type="audio/mpeg">
+  <!-- Trình phát nhạc: Thêm autoplay để tự phát -->
+  <audio id="bg-music" loop autoplay>
+    <source src="https://pomf2.lain.la/f/06j5rzj2.mp3" type="audio/mpeg">
   </audio>
 
   <!-- Nút bật tắt nhạc -->
-  <button class="music-btn" id="music-toggle" onclick="toggleMusic()">🎵</button>
+  <button class="music-btn" id="music-toggle" onclick="toggleMusic()">⏸️</button>
 
   <div class="header">
     <h1 class="logo">304GAMER</h1>
@@ -213,18 +213,35 @@
     &copy; 2024 304GAMER. Mọi quyền được bảo lưu.
   </div>
 
-  <!-- Đoạn Script bật tắt nhạc -->
+  <!-- Đoạn Script bắt sự kiện chạm màn hình và bật tắt nhạc -->
   <script>
     var audio = document.getElementById("bg-music");
     var btn = document.getElementById("music-toggle");
 
+    // Cố gắng tự động phát ngay khi tải trang
+    audio.play().then(() => {
+      btn.innerHTML = "⏸️";
+    }).catch((error) => {
+      // Nếu trình duyệt chặn, đổi icon thành Play
+      btn.innerHTML = "🎵";
+    });
+
+    // Mẹo: Nếu trình duyệt chặn, chỉ cần khách chạm vào màn hình (bấm vào bất kỳ đâu) là nhạc tự phát
+    document.body.addEventListener('click', function() {
+      if (audio.paused) {
+        audio.play();
+        btn.innerHTML = "⏸️";
+      }
+    }, { once: true }); // Chỉ chạy lần chạm đầu tiên
+
+    // Hàm bật tắt nhạc bằng nút tròn
     function toggleMusic() {
       if (audio.paused) {
         audio.play();
-        btn.innerHTML = "⏸️"; // Đổi thành nút Tạm dừng
+        btn.innerHTML = "⏸️";
       } else {
         audio.pause();
-        btn.innerHTML = "🎵"; // Đổi thành nút Phát nhạc
+        btn.innerHTML = "🎵";
       }
     }
   </script>
