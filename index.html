@@ -67,7 +67,7 @@
       font-size: 18px;
       font-weight: bold;
       cursor: pointer;
-      list-style: none; /* Ẩn mũi tên mặc định */
+      list-style: none;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -83,7 +83,6 @@
       display: none;
     }
 
-    /* Dấu cộng/trừ */
     summary::after {
       content: '+';
       font-size: 24px;
@@ -122,7 +121,6 @@
       transform: scale(0.98);
     }
 
-    /* Màu riêng cho từng game */
     .btn-ff { background: linear-gradient(90deg, #ff9900, #ff5500); }
     .btn-lq { background: linear-gradient(90deg, #0055ff, #00d2ff); }
     .btn-pubg { background: linear-gradient(90deg, #ffd700, #ff8c00); }
@@ -133,9 +131,43 @@
       color: #555;
       text-align: center;
     }
+
+    /* Nút Nhạc Nổi */
+    .music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: #00d2ff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 210, 255, 0.5);
+      font-size: 24px;
+      z-index: 999;
+      border: none;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Trình phát nhạc ẩn -->
+  <audio id="bg-music" loop>
+    <source src="https://docs.google.com/uc?export=download&id=10LwGngdaxs5ZXEhmE3LFr1qQdXt5RJMV" type="audio/mpeg">
+  </audio>
+
+  <!-- Nút bật tắt nhạc -->
+  <button class="music-btn" id="music-toggle" onclick="toggleMusic()">🎵</button>
 
   <div class="header">
     <h1 class="logo">304GAMER</h1>
@@ -148,6 +180,7 @@
     <details>
       <summary>🔥 Free Fire</summary>
       <div class="download-area">
+        <!-- THAY LINK TẢI FF VÀO ĐÂY -->
         <a href="LINK_TAI_FF_CUA_BAN" class="btn btn-ff">Tải Bản Mod FF (Full Menu)</a>
       </div>
     </details>
@@ -156,6 +189,7 @@
     <details>
       <summary>⚔️ Liên Quân Mobile</summary>
       <div class="download-area">
+        <!-- THAY 4 LINK TẢI LQ VÀO ĐÂY -->
         <a href="LINK_LQ_BAN_1" class="btn btn-lq">Bản 1: Map Hack & Skin</a>
         <a href="LINK_LQ_BAN_2" class="btn btn-lq">Bản 2: Drone View</a>
         <a href="LINK_LQ_BAN_3" class="btn btn-lq">Bản 3: Aim Skill</a>
@@ -167,6 +201,7 @@
     <details>
       <summary>🎯 PUBG Mobile</summary>
       <div class="download-area">
+        <!-- THAY 2 LINK TẢI PUBG VÀO ĐÂY -->
         <a href="LINK_PUBG_BAN_1" class="btn btn-pubg">Bản 1: Aimbot & ESP</a>
         <a href="LINK_PUBG_BAN_2" class="btn btn-pubg">Bản 2: No Recoil & Antiban</a>
       </div>
@@ -177,6 +212,22 @@
   <div class="footer">
     &copy; 2024 304GAMER. Mọi quyền được bảo lưu.
   </div>
+
+  <!-- Đoạn Script bật tắt nhạc -->
+  <script>
+    var audio = document.getElementById("bg-music");
+    var btn = document.getElementById("music-toggle");
+
+    function toggleMusic() {
+      if (audio.paused) {
+        audio.play();
+        btn.innerHTML = "⏸️"; // Đổi thành nút Tạm dừng
+      } else {
+        audio.pause();
+        btn.innerHTML = "🎵"; // Đổi thành nút Phát nhạc
+      }
+    }
+  </script>
 
 </body>
 </html>
