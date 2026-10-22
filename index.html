@@ -3,194 +3,230 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>304GAMER - Ultimate Mod Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <title>304GAMER | Hệ Thống Phân Phối Mod</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
   
   <style>
     /* --- CÀI ĐẶT CHUNG --- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', sans-serif;
-      background-color: #030303;
-      color: #ffffff;
+      background-color: #020202;
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      overflow-x: hidden;
+      cursor: crosshair; /* Đổi con trỏ thành dấu cộng công nghệ */
     }
 
-    /* Nền hạt sáng động */
-    #particles-js {
+    /* --- HIỆU ỨNG 1: MÀN HÌNH LOADING --- */
+    #preloader {
       position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0; left: 0;
-      z-index: -1;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: #020202;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 1s ease, visibility 1s ease;
     }
-
-    /* --- HEADER (LOGO) --- */
-    .header {
-      text-align: center;
-      margin-top: 60px;
-      margin-bottom: 50px;
-      z-index: 10;
+    .loader-ring {
+      width: 80px; height: 80px;
+      border: 3px solid rgba(0, 210, 255, 0.1);
+      border-top: 3px solid #00d2ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
     }
-    .logo {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 45px;
-      font-weight: 900;
-      letter-spacing: 4px;
-      background: linear-gradient(90deg, #ff0055, #00d2ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin: 0;
-      text-shadow: 0 0 30px rgba(0, 210, 255, 0.5);
-      /* Hiệu ứng gõ chữ */
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 3px solid #00d2ff;
-      animation: typing 2s steps(20, end), blink-caret .75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: #00d2ff; }
-    }
-
-    .subtitle {
+    .loader-text {
+      margin-top: 20px;
+      font-family: 'Syncopate', sans-serif;
       color: #00d2ff;
-      font-size: 12px;
       letter-spacing: 5px;
-      margin-top: 10px;
-      text-transform: uppercase;
-      font-weight: 600;
+      font-size: 12px;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+    /* --- HIỆU ỨNG 2: LƯỚI NỀN PHÁT SÁNG --- */
+    .bg-grid {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+      z-index: -1;
+      perspective: 500px;
     }
 
-    /* --- DANH SÁCH GAME --- */
+    /* --- HIỆU ỨNG 3: VÒNG SÁNG ĐI THEO TAY --- */
+    .cursor-glow {
+      position: fixed;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(0, 210, 255, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      transition: opacity 0.3s;
+    }
+
+    /* --- HEADER --- */
+    .header {
+      margin-top: 80px;
+      text-align: center;
+      z-index: 10;
+      position: relative;
+    }
+    .title-main {
+      font-family: 'Syncopate', sans-serif;
+      font-size: 35px;
+      letter-spacing: 8px;
+      color: transparent;
+      -webkit-text-stroke: 1px #fff;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      margin-bottom: 10px;
+    }
+    .title-highlight {
+      color: #00d2ff;
+      -webkit-text-stroke: 0;
+      text-shadow: 0 0 30px #00d2ff;
+    }
+    .subtitle {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: #888;
+      text-transform: uppercase;
+    }
+
+    /* --- GRID GAME THẺ --- */
     .game-grid {
       width: 90%;
       max-width: 450px;
+      margin-top: 50px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      padding-bottom: 50px;
+      gap: 25px;
       z-index: 10;
+      position: relative;
     }
 
-    /* Thẻ Game */
+    /* Thẻ Game 3D */
     .game-card {
-      position: relative;
-      background: rgba(20, 20, 20, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 20px;
+      background: rgba(10, 10, 10, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+      padding: 25px;
       display: flex;
       align-items: center;
       cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
       overflow: hidden;
-      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.8);
     }
 
-    /* Hiệu ứng ánh sáng quét qua thẻ */
-    .game-card::before {
+    /* Viền phát sáng khi Hover */
+    .game-card::after {
       content: '';
       position: absolute;
-      top: 0; left: -100%;
-      width: 50%; height: 100%;
-      background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
-      transform: skewX(-25deg);
-      transition: 0.5s;
+      top: -50%; left: -50%; width: 200%; height: 200%;
+      background: conic-gradient(from 0deg, transparent, #00d2ff, transparent 30%);
+      animation: rotate-border 4s linear infinite;
+      opacity: 0;
+      transition: opacity 0.4s;
+      z-index: -1;
     }
-    .game-card:hover::before {
-      left: 150%;
-    }
+    .game-card:hover::after { opacity: 0.3; }
+    
+    @keyframes rotate-border { 100% { transform: rotate(360deg); } }
 
     .game-card:hover {
-      transform: scale(1.03);
-      border-color: rgba(0, 210, 255, 0.6);
-      box-shadow: 0 10px 30px rgba(0, 210, 255, 0.2);
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(0, 210, 255, 0.4);
+      box-shadow: 0 20px 40px -10px rgba(0, 210, 255, 0.3);
     }
 
-    .game-icon {
-      font-size: 35px;
-      margin-right: 20px;
-      background: rgba(255,255,255,0.05);
-      width: 60px; height: 60px;
+    .icon-wrapper {
+      width: 65px; height: 65px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 15px;
-      box-shadow: inset 0 0 10px rgba(255,255,255,0.1);
+      font-size: 32px;
+      margin-right: 20px;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
     }
 
-    .game-info h2 {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 20px;
+    .game-text h2 {
+      font-size: 22px;
       font-weight: 700;
       letter-spacing: 1px;
+      color: #fff;
+      margin-bottom: 5px;
     }
-    .game-info p {
-      margin: 5px 0 0;
-      font-size: 13px;
-      color: #aaa;
+    .game-text p {
+      font-size: 12px;
+      color: #00d2ff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
-    /* --- POPUP BẢNG MOD --- */
+    /* --- POPUP MOD MENU --- */
     .modal {
       display: none;
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(15px);
       z-index: 1000;
       justify-content: center;
       align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
+    .modal.show { display: flex; opacity: 1; }
 
-    .modal-content {
-      background: #0a0a0a;
-      border: 1px solid #222;
-      border-radius: 25px;
+    .modal-box {
       width: 90%;
       max-width: 400px;
-      padding: 25px;
+      background: #050505;
+      border: 1px solid rgba(0, 210, 255, 0.3);
+      border-radius: 24px;
+      padding: 30px;
       position: relative;
-      box-shadow: 0 0 50px rgba(0, 210, 255, 0.15);
-      animation: slideUp 0.4s ease forwards;
+      box-shadow: 0 0 60px rgba(0, 210, 255, 0.15);
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+    .modal.show .modal-box { transform: scale(1); }
 
-    @keyframes slideUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .modal-header {
+    .modal-title {
+      font-family: 'Syncopate', sans-serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: #fff;
+      margin-bottom: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
       padding-bottom: 15px;
     }
 
-    .modal-header h3 {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 20px;
-      color: #00d2ff;
-    }
-
-    .close-modal {
-      background: #1a1a1a;
-      border: 1px solid #333;
+    .btn-close {
+      background: rgba(255,255,255,0.05);
+      border: none;
       color: #fff;
       width: 35px; height: 35px;
       border-radius: 50%;
@@ -198,219 +234,185 @@
       cursor: pointer;
       transition: 0.3s;
     }
-    .close-modal:hover { background: #ff0055; border-color: #ff0055; transform: rotate(90deg); }
+    .btn-close:hover { background: #ff0055; transform: rotate(90deg); }
 
-    /* Nút tải trong bảng */
-    .download-list {
+    /* Nút Tải */
+    .dl-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      max-height: 60vh;
+      gap: 15px;
+      max-height: 50vh;
       overflow-y: auto;
       padding-right: 5px;
     }
+    .dl-list::-webkit-scrollbar { width: 4px; }
+    .dl-list::-webkit-scrollbar-thumb { background: #00d2ff; border-radius: 10px; }
 
-    .btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .btn-dl {
+      display: block;
+      width: 100%;
       padding: 16px;
+      text-align: center;
       text-decoration: none;
-      color: white;
-      font-weight: 600;
-      font-size: 15px;
+      color: #000;
+      font-weight: 700;
+      font-size: 14px;
       border-radius: 12px;
-      transition: all 0.3s;
-      letter-spacing: 0.5px;
-      border: 1px solid rgba(255,255,255,0.1);
+      background: #fff;
+      transition: all 0.3s ease;
       text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-    
-    /* Màu sắc nút */
-    .btn-ff { background: linear-gradient(45deg, #ff9900, #ff5500); box-shadow: 0 0 15px rgba(255, 85, 0, 0.4); }
-    .btn-lq { background: linear-gradient(45deg, #0055ff, #00d2ff); box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); }
-    .btn-pubg { background: linear-gradient(45deg, #ffd700, #ff8c00); box-shadow: 0 0 15px rgba(255, 140, 0, 0.4); }
+    .btn-dl::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+      transition: 0.5s;
+    }
+    .btn-dl:hover::before { left: 100%; }
+    .btn-dl:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(255,255,255,0.4); }
 
+    /* Phân màu nút */
+    .btn-ff { background: linear-gradient(90deg, #ff9900, #ff5500); color: #fff;}
+    .btn-lq { background: linear-gradient(90deg, #0055ff, #00d2ff); color: #fff;}
+    .btn-pubg { background: linear-gradient(90deg, #ffd700, #ff8c00); color: #000;}
+
+    /* --- FOOTER --- */
     .footer {
-      margin-top: auto;
-      padding: 20px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 12px;
+      margin-top: 60px;
+      padding-bottom: 30px;
+      font-size: 10px;
       color: #444;
       letter-spacing: 2px;
+      text-transform: uppercase;
       z-index: 10;
     }
 
-    /* --- BẢNG GIỚI THIỆU ĐẦU TIÊN --- */
-    .intro-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
-    .intro-box {
-      background: rgba(20,20,20,0.9);
-      border: 2px solid #00d2ff;
-      border-radius: 20px;
-      padding: 40px 30px;
-      width: 80%;
-      max-width: 350px;
-      text-align: center;
-      box-shadow: 0 0 60px rgba(0, 210, 255, 0.3);
-      animation: zoomIn 0.5s ease;
-    }
-    .intro-box h2 { font-family: 'Orbitron', sans-serif; color: #00d2ff; margin-top: 0; font-weight: 900; letter-spacing: 2px;}
-    .intro-box p { color: #ccc; font-size: 15px; line-height: 1.6; margin-bottom: 30px; font-family: 'Montserrat', sans-serif;}
-    
-    .close-btn {
-      background: transparent;
-      color: #00d2ff; border: 2px solid #00d2ff; 
-      padding: 15px 40px; border-radius: 10px; 
-      font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: bold;
-      cursor: pointer; transition: 0.3s; box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
-      text-transform: uppercase; letter-spacing: 1px;
-    }
-    .close-btn:hover {
-      background: #00d2ff; color: #000;
-      box-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
-    }
-
-    /* Thanh cuộn xịn */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #111; }
-    ::-webkit-scrollbar-thumb { background: #00d2ff; border-radius: 10px; }
   </style>
 </head>
 <body>
 
-  <!-- Nền hạt sáng động -->
-  <div id="particles-js"></div>
+  <!-- MÀN HÌNH LOADING -->
+  <div id="preloader">
+    <div class="loader-ring"></div>
+    <div class="loader-text">INITIALIZING 304 SYSTEM...</div>
+  </div>
 
-  <!-- Nhạc nền -->
+  <!-- LƯỚI NỀN & ÁNH SÁNG CHUỘT -->
+  <div class="bg-grid"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- NHẠC NỀN -->
   <audio id="bg-music" loop>
     <source src="https://pomf2.lain.la/f/06j5rzj2.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- BẢNG GIỚI THIỆU ĐẦU TIÊN -->
-  <div class="intro-overlay" id="introOverlay">
-    <div class="intro-box">
-      <h2>HỆ THỐNG 304</h2>
-      <p>Chào mừng bạn đến với kho Mod Menu Premium. Vui lòng chọn Game để xem các phiên bản!</p>
-      <button class="close-btn" onclick="closeIntro()">BẮT ĐẦU</button>
-    </div>
-  </div>
-
-  <!-- TIÊU ĐỀ -->
+  <!-- HEADER -->
   <div class="header">
-    <h1 class="logo">304GAMER</h1>
-    <div class="subtitle">Ultimate Mod Store</div>
+    <div class="title-main">304<span class="title-highlight">GAMER</span></div>
+    <div class="subtitle">Hệ thống phân phối Mod Menu</div>
   </div>
 
   <!-- DANH SÁCH GAME -->
   <div class="game-grid">
     
     <div class="game-card" onclick="openModal('modal-ff')">
-      <div class="game-icon">🔥</div>
-      <div class="game-info">
+      <div class="icon-wrapper">🔥</div>
+      <div class="game-text">
         <h2>Free Fire</h2>
-        <p>1 Phiên bản Mod</p>
+        <p>1 Bản Mod</p>
       </div>
     </div>
 
     <div class="game-card" onclick="openModal('modal-lq')">
-      <div class="game-icon">⚔️</div>
-      <div class="game-info">
-        <h2>Liên Quân Mobile</h2>
-        <p>4 Phiên bản Mod</p>
+      <div class="icon-wrapper">⚔️</div>
+      <div class="game-text">
+        <h2>Liên Quân</h2>
+        <p>4 Bản Mod</p>
       </div>
     </div>
 
     <div class="game-card" onclick="openModal('modal-pubg')">
-      <div class="game-icon">🎯</div>
-      <div class="game-info">
+      <div class="icon-wrapper">🎯</div>
+      <div class="game-text">
         <h2>PUBG Mobile</h2>
-        <p>2 Phiên bản Mod</p>
+        <p>2 Bản Mod</p>
       </div>
     </div>
 
   </div>
 
-  <div class="footer">
-    &copy; 2024 304GAMER SYSTEM
-  </div>
+  <div class="footer">© 2024 304GAMER. Bảo lưu mọi quyền.</div>
 
   <!-- POPUP FREE FIRE -->
   <div class="modal" id="modal-ff">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>FREE FIRE</h3>
-        <button class="close-modal" onclick="closeModal('modal-ff')">✕</button>
+    <div class="modal-box">
+      <div class="modal-title">
+        <span>FREE FIRE</span>
+        <button class="btn-close" onclick="closeModal('modal-ff')">✕</button>
       </div>
-      <div class="download-list">
-        <a href="https://appinstall.cloud/install-pro/mk4qwuhb1111" class="btn btn-ff">Tải Bản Mod FF (Full Menu)</a>
+      <div class="dl-list">
+        <a href="https://appinstall.cloud/install-pro/mk4qwuhb1111" class="btn-dl btn-ff">Tải Bản Mod FF (Full Menu)</a>
       </div>
     </div>
   </div>
 
   <!-- POPUP LIÊN QUÂN -->
   <div class="modal" id="modal-lq">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>LIÊN QUÂN</h3>
-        <button class="close-modal" onclick="closeModal('modal-lq')">✕</button>
+    <div class="modal-box">
+      <div class="modal-title">
+        <span>LIÊN QUÂN</span>
+        <button class="btn-close" onclick="closeModal('modal-lq')">✕</button>
       </div>
-      <div class="download-list">
-        <a href="https://appinstall.cloud/install-pro/27lpbuof4444" class="btn btn-lq">Zoro + Yong Mod Full Skin</a>
-        <a href="https://appinstall.cloud/install-pro/2oszfmx66666" class="btn btn-lq">Chấp Tố Độc Quyền</a>
-        <a href="https://appinstall.cloud/install-pro/buddv1iv4444" class="btn btn-lq">Zoro VIP Chấp Tố</a>
-        <a href="https://appinstall.cloud/install-pro/pklbyzh25555" class="btn btn-lq">Dracula</a>
+      <div class="dl-list">
+        <a href="https://appinstall.cloud/install-pro/27lpbuof4444" class="btn-dl btn-lq">Zoro + Yong Mod Full Skin</a>
+        <a href="https://appinstall.cloud/install-pro/2oszfmx66666" class="btn-dl btn-lq">Chấp Tố Độc Quyền</a>
+        <a href="https://appinstall.cloud/install-pro/buddv1iv4444" class="btn-dl btn-lq">Zoro VIP Chấp Tố</a>
+        <a href="https://appinstall.cloud/install-pro/pklbyzh25555" class="btn-dl btn-lq">Dracula</a>
       </div>
     </div>
   </div>
 
   <!-- POPUP PUBG -->
   <div class="modal" id="modal-pubg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>PUBG MOBILE</h3>
-        <button class="close-modal" onclick="closeModal('modal-pubg')">✕</button>
+    <div class="modal-box">
+      <div class="modal-title">
+        <span>PUBG MOBILE</span>
+        <button class="btn-close" onclick="closeModal('modal-pubg')">✕</button>
       </div>
-      <div class="download-list">
-        <a href="https://appinstall.cloud/install-pro/fmdanift9999" class="btn btn-pubg">Dracula Pro 4.6</a>
-        <a href="https://appinstall.cloud/install-pro/hecoiwc02222" class="btn btn-pubg">PUBG Luxury</a>
+      <div class="dl-list">
+        <a href="https://appinstall.cloud/install-pro/fmdanift9999" class="btn-dl btn-pubg">Dracula Pro 4.6</a>
+        <a href="https://appinstall.cloud/install-pro/hecoiwc02222" class="btn-dl btn-pubg">PUBG Luxury</a>
       </div>
     </div>
   </div>
 
-  <!-- Thư viện tạo hiệu ứng hạt sáng -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  
   <script>
-    // Kích hoạt hiệu ứng hạt sáng
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": ["#00d2ff", "#ff0055"] },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
-        "size": { "value": 3, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 0.1, "sync": false } },
-        "line_linked": { "enable": true, "distance": 150, "color": "#00d2ff", "opacity": 0.2, "width": 1 },
-        "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } },
-        "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } } }
-      },
-      "retina_detect": true
+    // 1. TẮT MÀN HÌNH LOADING SAU 1.5 GIÂY
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        preloader.style.opacity = '0';
+        setTimeout(() => { preloader.style.display = 'none'; }, 1000);
+      }, 1500);
     });
 
-    // Xử lý nhạc
+    // 2. HIỆU ỨNG ÁNH SÁNG ĐI THEO TAY/CHUỘT
+    const glow = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', (e) => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+    document.addEventListener('touchmove', (e) => {
+      glow.style.left = e.touches[0].clientX + 'px';
+      glow.style.top = e.touches[0].clientY + 'px';
+    });
+
+    // 3. XỬ LÝ NHẠC
     var audio = document.getElementById("bg-music");
     function playMusic() {
       audio.play().catch(function() {
@@ -423,21 +425,15 @@
         document.addEventListener('touchstart', playOnInteraction);
       });
     }
+    playMusic();
 
-    function closeIntro() {
-      document.getElementById("introOverlay").style.display = "none";
-      playMusic();
-    }
-
-    // Xử lý đóng mở bảng Popup Game
+    // 4. ĐÓNG MỞ POPUP
     function openModal(id) {
-      document.getElementById(id).style.display = "flex";
+      document.getElementById(id).classList.add('show');
     }
     function closeModal(id) {
-      document.getElementById(id).style.display = "none";
+      document.getElementById(id).classList.remove('show');
     }
-
-    playMusic();
   </script>
 
 </body>
