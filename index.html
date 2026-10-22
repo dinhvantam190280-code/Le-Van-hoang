@@ -131,14 +131,76 @@
       color: #555;
       text-align: center;
     }
+
+    /* --- GIAO DIỆN BẢNG GIỚI THIỆU (POPUP) --- */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .intro-box {
+      background: #151515;
+      border: 1px solid #00d2ff;
+      border-radius: 15px;
+      padding: 30px 20px;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 25px rgba(0, 210, 255, 0.3);
+    }
+
+    .intro-box h2 {
+      color: #00d2ff;
+      margin-top: 0;
+      font-size: 22px;
+    }
+
+    .intro-box p {
+      color: #ccc;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .close-btn {
+      background: linear-gradient(90deg, #ff0055, #00d2ff);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .close-btn:active {
+      transform: scale(0.95);
+    }
   </style>
 </head>
 <body>
 
-  <!-- Trình phát nhạc (Dùng lại link Pomf của bạn) -->
+  <!-- Trình phát nhạc ẩn -->
   <audio id="bg-music" loop>
     <source src="https://pomf2.lain.la/f/06j5rzj2.mp3" type="audio/mpeg">
   </audio>
+
+  <!-- BẢNG GIỚI THIỆU KHI VÀO WEB -->
+  <div class="overlay" id="introOverlay">
+    <div class="intro-box">
+      <h2>Chào mừng đến với 304GAMER!</h2>
+      <p>Tụi mình chuyên cung cấp các bản Mod Menu chất lượng cao cho FF, Liên Quân và PUBG. Bấm vào từng game bên dưới để xem các bản mod nhé!</p>
+      <button class="close-btn" onclick="closeIntro()">Vào Web Ngay</button>
+    </div>
+  </div>
 
   <div class="header">
     <h1 class="logo">304GAMER</h1>
@@ -151,6 +213,7 @@
     <details>
       <summary>🔥 Free Fire</summary>
       <div class="download-area">
+        <!-- THAY LINK TẢI FF VÀO ĐÂY -->
         <a href="LINK_TAI_FF_CUA_BAN" class="btn btn-ff">Tải Bản Mod FF (Full Menu)</a>
       </div>
     </details>
@@ -159,6 +222,7 @@
     <details>
       <summary>⚔️ Liên Quân Mobile</summary>
       <div class="download-area">
+        <!-- THAY 4 LINK TẢI LQ VÀO ĐÂY -->
         <a href="LINK_LQ_BAN_1" class="btn btn-lq">Bản 1: Map Hack & Skin</a>
         <a href="LINK_LQ_BAN_2" class="btn btn-lq">Bản 2: Drone View</a>
         <a href="LINK_LQ_BAN_3" class="btn btn-lq">Bản 3: Aim Skill</a>
@@ -170,6 +234,7 @@
     <details>
       <summary>🎯 PUBG Mobile</summary>
       <div class="download-area">
+        <!-- THAY 2 LINK TẢI PUBG VÀO ĐÂY -->
         <a href="LINK_PUBG_BAN_1" class="btn btn-pubg">Bản 1: Aimbot & ESP</a>
         <a href="LINK_PUBG_BAN_2" class="btn btn-pubg">Bản 2: No Recoil & Antiban</a>
       </div>
@@ -181,26 +246,34 @@
     &copy; 2024 304GAMER. Mọi quyền được bảo lưu.
   </div>
 
-  <!-- Script "Bẻ khóa" tự động phát nhạc -->
+  <!-- Script xử lý đóng bảng giới thiệu và tự động phát nhạc -->
   <script>
+    // 1. Xử lý đóng bảng giới thiệu
+    function closeIntro() {
+      document.getElementById("introOverlay").style.display = "none";
+      
+      // Kích hoạt phát nhạc luôn khi bấm nút "Vào Web Ngay"
+      playMusic();
+    }
+
+    // 2. Xử lý phát nhạc
     var audio = document.getElementById("bg-music");
 
-    // 1. Cố gắng tự động phát ngay khi tải trang
-    audio.play().catch(function() {
-      // 2. Nếu bị trình duyệt chặn, lập tức kích hoạt "bẫy" chạm màn hình
-      var playOnInteraction = function() {
-        audio.play();
-        // Khi đã phát được rồi thì gỡ bỏ bẫy để không bị lag
-        document.removeEventListener('click', playOnInteraction);
-        document.removeEventListener('touchstart', playOnInteraction);
-        document.removeEventListener('scroll', playOnInteraction);
-      };
-      
-      // Nhạc sẽ tự phát ngay khi khách chạm, vuốt, hoặc cuộn trang
-      document.addEventListener('click', playOnInteraction);
-      document.addEventListener('touchstart', playOnInteraction);
-      document.addEventListener('scroll', playOnInteraction);
-    });
+    function playMusic() {
+      audio.play().catch(function() {
+        // Nếu bị chặn, đợi chạm màn hình lần nữa
+        var playOnInteraction = function() {
+          audio.play();
+          document.removeEventListener('click', playOnInteraction);
+          document.removeEventListener('touchstart', playOnInteraction);
+        };
+        document.addEventListener('click', playOnInteraction);
+        document.addEventListener('touchstart', playOnInteraction);
+      });
+    }
+
+    // Cố gắng tự phát ngay khi vào web
+    playMusic();
   </script>
 
 </body>
