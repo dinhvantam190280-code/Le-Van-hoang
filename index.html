@@ -1,24 +1,20 @@
 <!DOCTYPE html>
- <html2 lang="vi">
+<html lang="vi">
 <head>
-  <metapx charset="UTF-8">
-  <meta;
- name="viewport" content="width=device-width     , initial-scale=1.0">
-  < backgroundtitle>304GAMER - Kho Mod Game</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>304GAMER - Kho Mod Game</title>
   <style>
-    /* C:ài đặt chung */
     body {
-      linear margin: 0;
-     -gradient padding: 20px;
-(      font-family: 'Segoe UI90', Tdegahoma, Geneva, Verdana, sans-serif;
-      background-color: #,0a0a0a;
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0a0a0a;
       color: #ffffff;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-
-    /* Logo */
     .header {
       text-align: center;
       margin-bottom: 30px;
@@ -26,7 +22,9 @@
     }
     .logo {
       font-size: 40px;
-      font-weight #ff0055, #00d2ff);
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #ff0055, #00d2ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin: 0;
@@ -37,8 +35,6 @@
       letter-spacing: 2px;
       margin-top: 5px;
     }
-
-    /* Khung chứa các game */
     .game-container {
       width: 100%;
       max-width: 500px;
@@ -46,8 +42,6 @@
       flex-direction: column;
       gap: 15px;
     }
-
-    /* Thẻ Game (Dạng thả xuống) */
     details {
       background: #151515;
       border: 1px solid #333;
@@ -55,12 +49,10 @@
       overflow: hidden;
       transition: all 0.3s ease;
     }
-    
     details[open] {
       border-color: #00d2ff;
       box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
     }
-
     summary {
       padding: 20px;
       font-size: 18px;
@@ -73,15 +65,12 @@
       background: #1a1a1a;
       transition: background 0.2s;
     }
-
     summary:hover {
       background: #222;
     }
-
     summary::-webkit-details-marker {
       display: none;
     }
-
     summary::after {
       content: '+';
       font-size: 24px;
@@ -91,8 +80,6 @@
     details[open] summary::after {
       content: '-';
     }
-
-    /* Khu vực chứa các nút tải */
     .download-area {
       padding: 15px;
       background: #111;
@@ -101,8 +88,6 @@
       gap: 10px;
       border-top: 1px solid #333;
     }
-
-    /* Nút bấm tải */
     .btn {
       display: block;
       width: 100%;
@@ -115,23 +100,18 @@
       box-sizing: border-box;
       transition: transform 0.1s, opacity 0.2s;
     }
-    
     .btn:active {
       transform: scale(0.98);
     }
-
     .btn-ff { background: linear-gradient(90deg, #ff9900, #ff5500); }
     .btn-lq { background: linear-gradient(90deg, #0055ff, #00d2ff); }
     .btn-pubg { background: linear-gradient(90deg, #ffd700, #ff8c00); }
-
     .footer {
       margin-top: 40px;
       font-size: 12px;
       color: #555;
       text-align: center;
     }
-
-    /* --- GIAO DIỆN BẢNG GIỚI THIỆU (POPUP) --- */
     .overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -142,7 +122,6 @@
       align-items: center;
       z-index: 1000;
     }
-
     .intro-box {
       background: #151515;
       border: 1px solid #00d2ff;
@@ -154,20 +133,17 @@
       position: relative;
       box-shadow: 0 0 25px rgba(0, 210, 255, 0.3);
     }
-
     .intro-box h2 {
       color: #00d2ff;
       margin-top: 0;
       font-size: 22px;
     }
-
     .intro-box p {
       color: #ccc;
       font-size: 15px;
       line-height: 1.6;
       margin-bottom: 25px;
     }
-
     .close-btn {
       background: linear-gradient(90deg, #ff0055, #00d2ff);
       color: white;
@@ -179,7 +155,6 @@
       cursor: pointer;
       transition: transform 0.2s;
     }
-
     .close-btn:active {
       transform: scale(0.95);
     }
@@ -187,12 +162,10 @@
 </head>
 <body>
 
-  <!-- Trình phát nhạc ẩn -->
   <audio id="bg-music" loop>
     <source src="https://pomf2.lain.la/f/06j5rzj2.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- BẢNG GIỚI THIỆU KHI VÀO WEB -->
   <div class="overlay" id="introOverlay">
     <div class="intro-box">
       <h2>Chào mừng đến với 304GAMER!</h2>
@@ -207,8 +180,6 @@
   </div>
 
   <div class="game-container">
-
-    <!-- GAME 1: FREE FIRE -->
     <details>
       <summary>🔥 Free Fire</summary>
       <div class="download-area">
@@ -216,7 +187,6 @@
       </div>
     </details>
 
-    <!-- GAME 2: LIÊN QUÂN -->
     <details>
       <summary>⚔️ Liên Quân Mobile</summary>
       <div class="download-area">
@@ -227,7 +197,6 @@
       </div>
     </details>
 
-    <!-- GAME 3: PUBG MOBILE -->
     <details>
       <summary>🎯 PUBG Mobile</summary>
       <div class="download-area">
@@ -235,22 +204,18 @@
         <a href="https://appinstall.cloud/install-pro/hecoiwc02222" class="btn btn-pubg">PUBG Luxury</a>
       </div>
     </details>
-
   </div>
 
   <div class="footer">
     &copy; 2024 304GAMER. Mọi quyền được bảo lưu.
   </div>
 
-  <!-- Script xử lý đóng bảng giới thiệu và tự động phát nhạc -->
   <script>
     function closeIntro() {
       document.getElementById("introOverlay").style.display = "none";
       playMusic();
     }
-
     var audio = document.getElementById("bg-music");
-
     function playMusic() {
       audio.play().catch(function() {
         var playOnInteraction = function() {
@@ -262,7 +227,6 @@
         document.addEventListener('touchstart', playOnInteraction);
       });
     }
-
     playMusic();
   </script>
 
