@@ -131,43 +131,14 @@
       color: #555;
       text-align: center;
     }
-
-    /* Nút Nhạc Nổi */
-    .music-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background: #00d2ff;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 210, 255, 0.5);
-      font-size: 24px;
-      z-index: 999;
-      border: none;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
   </style>
 </head>
 <body>
 
-  <!-- Trình phát nhạc: Thêm autoplay để tự phát -->
-  <audio id="bg-music" loop autoplay>
+  <!-- Trình phát nhạc (Dùng lại link Pomf của bạn) -->
+  <audio id="bg-music" loop>
     <source src="https://pomf2.lain.la/f/06j5rzj2.mp3" type="audio/mpeg">
   </audio>
-
-  <!-- Nút bật tắt nhạc -->
-  <button class="music-btn" id="music-toggle" onclick="toggleMusic()">⏸️</button>
 
   <div class="header">
     <h1 class="logo">304GAMER</h1>
@@ -180,7 +151,6 @@
     <details>
       <summary>🔥 Free Fire</summary>
       <div class="download-area">
-        <!-- THAY LINK TẢI FF VÀO ĐÂY -->
         <a href="LINK_TAI_FF_CUA_BAN" class="btn btn-ff">Tải Bản Mod FF (Full Menu)</a>
       </div>
     </details>
@@ -189,7 +159,6 @@
     <details>
       <summary>⚔️ Liên Quân Mobile</summary>
       <div class="download-area">
-        <!-- THAY 4 LINK TẢI LQ VÀO ĐÂY -->
         <a href="LINK_LQ_BAN_1" class="btn btn-lq">Bản 1: Map Hack & Skin</a>
         <a href="LINK_LQ_BAN_2" class="btn btn-lq">Bản 2: Drone View</a>
         <a href="LINK_LQ_BAN_3" class="btn btn-lq">Bản 3: Aim Skill</a>
@@ -201,7 +170,6 @@
     <details>
       <summary>🎯 PUBG Mobile</summary>
       <div class="download-area">
-        <!-- THAY 2 LINK TẢI PUBG VÀO ĐÂY -->
         <a href="LINK_PUBG_BAN_1" class="btn btn-pubg">Bản 1: Aimbot & ESP</a>
         <a href="LINK_PUBG_BAN_2" class="btn btn-pubg">Bản 2: No Recoil & Antiban</a>
       </div>
@@ -213,37 +181,26 @@
     &copy; 2024 304GAMER. Mọi quyền được bảo lưu.
   </div>
 
-  <!-- Đoạn Script bắt sự kiện chạm màn hình và bật tắt nhạc -->
+  <!-- Script "Bẻ khóa" tự động phát nhạc -->
   <script>
     var audio = document.getElementById("bg-music");
-    var btn = document.getElementById("music-toggle");
 
-    // Cố gắng tự động phát ngay khi tải trang
-    audio.play().then(() => {
-      btn.innerHTML = "⏸️";
-    }).catch((error) => {
-      // Nếu trình duyệt chặn, đổi icon thành Play
-      btn.innerHTML = "🎵";
+    // 1. Cố gắng tự động phát ngay khi tải trang
+    audio.play().catch(function() {
+      // 2. Nếu bị trình duyệt chặn, lập tức kích hoạt "bẫy" chạm màn hình
+      var playOnInteraction = function() {
+        audio.play();
+        // Khi đã phát được rồi thì gỡ bỏ bẫy để không bị lag
+        document.removeEventListener('click', playOnInteraction);
+        document.removeEventListener('touchstart', playOnInteraction);
+        document.removeEventListener('scroll', playOnInteraction);
+      };
+      
+      // Nhạc sẽ tự phát ngay khi khách chạm, vuốt, hoặc cuộn trang
+      document.addEventListener('click', playOnInteraction);
+      document.addEventListener('touchstart', playOnInteraction);
+      document.addEventListener('scroll', playOnInteraction);
     });
-
-    // Mẹo: Nếu trình duyệt chặn, chỉ cần khách chạm vào màn hình (bấm vào bất kỳ đâu) là nhạc tự phát
-    document.body.addEventListener('click', function() {
-      if (audio.paused) {
-        audio.play();
-        btn.innerHTML = "⏸️";
-      }
-    }, { once: true }); // Chỉ chạy lần chạm đầu tiên
-
-    // Hàm bật tắt nhạc bằng nút tròn
-    function toggleMusic() {
-      if (audio.paused) {
-        audio.play();
-        btn.innerHTML = "⏸️";
-      } else {
-        audio.pause();
-        btn.innerHTML = "🎵";
-      }
-    }
   </script>
 
 </body>
