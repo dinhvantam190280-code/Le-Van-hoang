@@ -2,23 +2,22 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>304GAMER - Mod Game Free Download</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>304GAMER - Next Level Gaming</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #07030a;
-  --pink: #ff0757;
+  --pink: #ff0055;
   --purple: #9d00ff;
-  --panel: #110612;
+  --panel: #120612;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  background: radial-gradient(ellipse at top, #2a0618, var(--bg) 60%);
+  background-color: var(--bg);
   color: #fff;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  min-height: 100vh;
 }
 a { text-decoration: none; color: inherit; }
 button { cursor: pointer; font: inherit; }
@@ -26,174 +25,145 @@ button { cursor: pointer; font: inherit; }
 /* HEADER */
 header {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(7,3,10,0.9); backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(255,7,87,0.3);
+  background: rgba(7,3,10,0.95); backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,0,85,0.3);
   display: flex; justify-content: space-between; align-items: center;
   padding: 15px 5vw;
 }
 .logo {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 24px; font-weight: 900; font-style: italic; letter-spacing: -1px;
+  font-family: 'Orbitron', sans-serif; font-size: 26px; font-weight: 900; font-style: italic;
   text-shadow: 0 0 15px var(--pink);
 }
 .logo span { color: var(--pink); }
-.nav-links { display: flex; gap: 20px; font-size: 12px; font-weight: 800; text-transform: uppercase; }
-.nav-links a:hover { color: var(--pink); text-shadow: 0 0 10px var(--pink); }
-.icon-btn { background: none; border: none; color: #fff; font-size: 20px; }
+.nav-links { display: flex; gap: 25px; font-size: 12px; font-weight: 800; text-transform: uppercase; }
+.nav-links a:hover { color: var(--pink); }
+.icon-btn { background: none; border: none; color: #fff; font-size: 22px; }
 
-/* HERO */
+/* HERO BANNER (GIỐNG ẢNH) */
 .hero {
-  position: relative; min-height: 550px;
-  display: flex; align-items: center; padding: 0 5vw;
-  background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop') center/cover;
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  padding: 0 5vw;
+  background: url('https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=2070&auto=format&fit=crop') center/cover;
   border-bottom: 2px solid var(--pink);
 }
 .hero::before {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(90deg, #07030a 30%, rgba(7,3,10,0.7) 60%, transparent 100%);
+  background: linear-gradient(90deg, #07030a 40%, rgba(7,3,10,0.6) 70%, transparent 100%);
 }
-.hero-content {
-  position: relative; z-index: 2; max-width: 600px;
-}
+.hero-content { position: relative; z-index: 2; max-width: 600px; }
 .hero h1 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(50px, 8vw, 80px); font-weight: 900; font-style: italic; line-height: 1;
-  text-shadow: 0 0 30px rgba(255,7,87,0.5);
-  margin-bottom: 15px;
+  font-family: 'Orbitron', sans-serif; font-size: clamp(60px, 8vw, 95px); font-weight: 900; font-style: italic;
+  line-height: 1; text-shadow: 0 0 30px rgba(255,0,85,0.6); margin-bottom: 10px;
 }
 .hero h1 span { color: var(--pink); }
-.hero p {
-  color: #ccc; font-size: 15px; line-height: 1.6; margin-bottom: 30px;
-  max-width: 400px;
-}
+.hero h2 { font-size: 24px; font-style: italic; margin-bottom: 15px; color: #ccc; }
+.hero p { color: #aaa; font-size: 15px; line-height: 1.6; margin-bottom: 30px; max-width: 400px; }
 .btn {
-  display: inline-block; padding: 14px 28px;
-  background: linear-gradient(90deg, #ff0757, #b3003b);
-  border: 1px solid var(--pink); border-radius: 4px;
-  font-weight: 900; letter-spacing: 1px;
-  box-shadow: 0 0 20px rgba(255,7,87,0.4);
-  transition: 0.3s;
+  display: inline-block; padding: 15px 35px;
+  background: linear-gradient(90deg, #ff0055, #b3003b);
+  border: 1px solid var(--pink); border-radius: 5px;
+  font-weight: 900; letter-spacing: 1px; transition: 0.3s;
+  box-shadow: 0 0:  20px rgba(255,80px,85 ,0.4);
 }
-.btn:hover { transform: translateY(-3px); box-shadow: 0 0 35px rgba(255,7,87,0.8); }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 0 40px rgba(255,0,85,0.8); }
 
-/* FLOATING CHARACTER (Hiệu ứng lơ lửng) */
-.character-float {
-  position: absolute; right: 5%; bottom: 0; width: 400px; height: 500px;
-  background: url('THAY_LINK_ANH_NHAN_VAT_PNG_CUA_BAN') no-repeat center bottom;
-  background-size: contain;
-  z-index: 1; pointer-events: none;
-  animation: floatChar 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 25px rgba(255,7,87,0.6));
-}
-@keyframes floatChar {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-/* GAME CARDS */
-.section { padding: 50px 5vw; }
-.section-title {
-  font-family: 'Orbitron', sans-serif; font-size: 28px; font-weight: 900;
-  margin-bottom: 25px; display: flex; align-items: center; gap: 10px;
-}
-.section-title span { color: var(--pink); }
-.game-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-}
-.game-card {
-  position: relative; border-radius: 8px; overflow: hidden;
-  border: 1px solid rgba(255,7,87,0.4);
-  background: var(--panel);
-  min-height: 220px; display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 20px; transition: 0.3s;
-}
-.game-card:hover { transform: translateY(-5px); border-color: var(--pink); box-shadow: 0 10px 30px rgba(255,7,87,0.2); }
-.game-card::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to top, #07030a 10%, transparent 80%);
-  z-index: 1;
-}
-.game-bg {
-  position: absolute; inset: 0; background-size: cover; background-position: center;
-  z-index: 0; opacity: 0.6; transition: 0.3s;
-}
-.game-card:hover .game-bg { transform: scale(1.05); opacity: 0.8; }
-.game-info { position: relative; z-index: 2; }
-.game-info h3 { font-family: 'Orbitron', sans-serif; font-size: 20px; margin-bottom: 5px; }
-.game-info p { font-size: 12px; color: #aaa; margin-bottom: 15px; }
-.game-info .small-btn {
-  display: inline-block; padding: 8px 16px; border: 1px solid var(--pink);
-  border-radius: 4px; font-size: 11px; font-weight: 900;
-  background: rgba(255,7,87,0.1);
-}
-.game-info .small-btn:hover { background: var(--pink); color: #fff; }
-
-/* DOWNLOAD SECTION */
-.download-wrap {
-  display: grid; grid-template-columns: 2fr 1fr; gap: 20px;
-}
-.download-box {
-  background: var(--panel); border: 1px solid rgba(255,7,87,0.4);
-  border-radius: 8px; padding: 20px;
-  box-shadow: 0 0 30px rgba(255,7,87,0.1);
-}
-.download-box h3 {
-  font-family: 'Orbitron', sans-serif; font-size: 22px; margin-bottom: 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;
-}
-.download-list { display: flex; flex-direction: column; gap: 10px; }
-.dl-row {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 15px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 6px; transition: 0.2s;
-}
-.dl-row:hover { border-color: var(--pink); background: rgba(255,7,87,0.05); }
-.dl-icon { width: 40px; height: 40px; background: rgba(255,7,87,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 15px; }
-.dl-text { flex: 1; }
-.dl-text strong { display: block; font-size: 14px; }
-.dl-text small { display: block; font-size: 11px; color: #aaa; margin-top: 3px; }
-.dl-arrow { color: var(--pink); font-size: 18px; font-weight: 900; }
-
-/* SUPPORT PANEL */
-.support-panel { display: flex; flex-direction: column; gap: 15px; }
-.support-item {
-  background: var(--panel); border: 1px solid rgba(255,7,87,0.3);
-  border-radius: 8px; padding: 20px; text-align: center;
-}
-.support-icon { font-size: 30px; color: var(--pink); margin-bottom: 10px; }
-.support-item b { display: block; font-size: 13px; margin-bottom: 8px; }
-.support-item p { font-size: 12px; color: #aaa; line-height: 1.5; }
-
-/* FOOTER */
-footer {
-  border-top: 1px solid rgba(255,7,87,0.3);
-  padding: 30px 5vw; text-align: center; font-size: 12px; color: #888;
-  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+/* CHARACTER */
+.character {
+  position: absolute; right: 5%; bottom: 0; width: 550px; height: 100%;
+  background: url('https://i.ibb.co/68ZqXqz/pubg-character.png') no-repeat center bottom;
+  background-size: contain; z-index: 1; pointer-events: none;
+  filter: drop-shadow(0 0 30px rgba(255,0,85,0.5));
 }
 
 /* POPUP NHẠC */
-.popup-overlay {
-  position: fixed; inset: 0; z-index: 1000;
-  background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
-  display: flex; justify-content: center; align-items: center;
+.music-popup {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: rgba(10, 2, 5, 0.85); border: 1px solid var(--pink); border-radius: 10px;
+  padding: 25px; text-align: center; z-index: 10; width: 300px;
+  box-shadow: 0 0 40px rgba(255,0,85,0.3); backdrop-filter: blur(10px);
 }
-.popup-overlay.hidden { display: none; }
-.popup-box {
-  background: linear-gradient(145deg, #1a0614, #07030a);
-  border: 1px solid var(--pink); border-radius: 12px;
-  padding: 30px; text-align: center; max-width: 350px; width: 90%;
-  box-shadow: 0 0 50px rgba(255,7,87,0.3);
-}
-.popup-box h2 { font-family: 'Orbitron', sans-serif; color: var(--pink); margin: 15px 0 10px; }
-.popup-box p { font-size: 13px; color: #ccc; margin-bottom: 20px; }
+.music-popup h3 { color: var(--pink); margin-bottom: 10px; font-size: 20px; }
+.music-popup p { font-size: 13px; color: #ccc; margin-bottom: 15px; }
 
-@media (max-width: 850px) {
-  .hero { flex-direction: column; align-items: flex-start; padding-top: 50px; min-height: auto; padding-bottom: 0; }
-  .hero::before { background: linear-gradient(to top, #07030a 10%, rgba(7,3,10,0.8) 50%, transparent 100%); }
-  .character-float { position: relative; right: auto; bottom: auto; width: 100%; height: 350px; margin-top: 20px; }
+/* GAME CARDS */
+.section { padding: 40px 5vw; }
+.game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.game-card {
+  position: relative; border-radius: 10px; overflow: hidden;
+  border: 1px solid rgba(255,0,85,0.3); background: var(--panel);
+  height: 220px; display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 20px; transition: 0.3s;
+}
+.game-card:hover { transform: translateY(-5px); border-color: var(--pink); box-shadow: 0 10px 30px rgba(255,0,85,0.2); }
+.game-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, #07030a 10%, transparent 90%); z-index: 1;
+}
+.game-bg {
+  position: absolute; inset: 0; background-size: cover; background-position: center;
+  z-index: 0; transition: 0.5s;
+}
+.game-card:hover .game-bg { transform: scale(1.1); }
+.game-info { position: relative; z-index: 2; }
+.game-info h3 { font-family: 'Orbitron', sans-serif; font-size: 22px; margin-bottom: 5px; text-shadow: 0 2px 5px #000; }
+.game-info p { font-size: 13px; color: #ddd; margin-bottom: 15px; text-shadow: 0 1px 3px #000; }
+.small-btn {
+  display: inline-block; padding20px; border: 1px solid var(--pink);
+  border-radius: 5px; font-size: 12px; font-weight: 900; background: rgba(0,0,0,0.5);
+}
+.small-btn:hover { background: var(--pink); }
+
+/* DOWNLOAD SECTION */
+.download-wrap { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+.dl-box {
+  background: var(--panel); border: 1px solid rgba(255,0,85,0.4);
+  border-radius: 10px; padding: 20px;
+}
+.dl-title { font-family: 'Orbitron', sans-serif; font-size: 24px; margin-bottom: 5px; }
+.dl-sub { font-size: 12px; color: #aaa; margin-bottom: 20px; }
+.dl-list { display: flex; flex-direction: column; gap: 10px; }
+.dl-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 15px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; transition: 0.2s;
+}
+.dl-row:hover { border-color: var(--pink); background: rgba(255,0,85,0.1); }
+.dl-icon { width: 35px; height: 35px; background: rgba(255,0,85,0.2); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-right: 15px; }
+.dl-text { flex: 1; }
+.dl-text strong { display: block; font-size: 14px; }
+.dl-text small { display: block; font-size: 11px; color: #aaa; margin-top: 3px; }
+.dl-size { font-size: 12px; color: #888; margin-right: 15px; }
+.dl-arrow { color: var(--pink); font-size: 18px; }
+
+/* SUPPORT BOX */
+.support-box { display: flex; flex-direction: column; gap: 15px; }
+.sup-item {
+  background: var(--panel); border: 1px solid rgba(255,0,85,0.3);
+  border-radius: 10px; padding: 20px; text-align: left; display: flex; gap: 15px; align-items: flex-start;
+}
+.sup-icon { font-size: 28px; color: var(--pink); }
+.sup-text b { display: block; font-size: 14px; margin-bottom: 5px; color: var(--pink); }
+.sup-text p { font-size: 12px; color: #aaa; line-height: 1.5; }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid rgba(255,0,85,0.3); padding: 30px 5vw;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+}
+.socials { display: flex; gap: 15px; }
+.socials span { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; }
+.socials span:hover { background: var(--pink); }
+
+@media (max-width: 900px) {
+  .hero { flex-direction: column; justify-content: center; align-items: flex-start; padding-top: 50px; text-align: left; }
+  .character { display: none; }
   .game-grid { grid-template-columns: 1fr; }
   .download-wrap { grid-template-columns: 1fr; }
   .nav-links { display: none; }
+  .hero h1 { font-size: 55px; }
 }
 </style>
 </head>
@@ -202,171 +172,157 @@ footer {
 <header>
   <a href="#" class="logo">304<span>GAMER</span></a>
   <nav class="nav-links">
-    <a href="#home">TRANG CHỦ</a>
-    <a href="#games">FREE FIRE</a>
-    <a href="#games">LIÊN QUÂN</a>
-    <a href="#games">PUBG MOBILE</a>
-    <a href="#downloads">HƯỚNG DẪN</a>
+    <a href="#">TRANG CHỦ</a>
+    <a href="#">FREE FIRE</a>
+    <a href="#">LIÊN QUÂN</a>
+    <a href="#">PUBG MOBILE</a>
+    <a href="#">HƯỚNG DẪN</a>
   </nav>
-  <button class="icon-btn" id="musicBtn">🔊</button>
+  <button class="icon-btn">🔊</button>
 </header>
 
-<!-- HERO BANNER -->
-<section class="hero" id="home">
+<!-- HERO -->
+<section class="hero">
   <div class="hero-content">
     <h1>304<span>GAMER</span></h1>
-    <p><b>MOD GAME - FREE DOWNLOAD</b><br>Trải nghiệm bản mod mượt mà - An toàn - Cập nhật liên tục!</p>
-    <a href="#games" class="btn">KHÁM PHÁ NGAY ↗</a>
+    <h2>MOD GAME - FREE DOWNLOAD</h2>
+    <p>Trải nghiệm bản mod mượt mà - An toàn - Cập nhật liên tục!</p>
+    <a href="#download" class="btn">KHÁM PHÁ NGAY ›</a>
   </div>
-  <!-- ẢNH NHÂN VẬT (Thay link ảnh PNG của bạn vào đây) -->
-  <div class="character-float" style="background-image: url('https://i.ibb.co/3s6KqK1/garena-free-fire-png.png');"></div>
+  
+  <div class="character"></div>
+
+  <!-- POPUP NHẠC (Giống ảnh) -->
+  <div class="music-popup">
+    <div style="font-size: 30px; color: var(--pink); margin-bottom: 10px;">🎵</div>
+    <h3>BẬT NHẠC NỀN</h3>
+    <p>Nhấn ĐÓNG để vào website và bật nhạc nền.</p>
+    <button class="btn" style="width: 100%; padding: 10px;" onclick="this.parentElement.style.display='none'">ĐÓNG ✕</button>
+  </div>
 </section>
 
-<!-- DANH SÁCH GAME -->
-<section class="section" id="games">
-  <div class="section-title">GAME <span>HOT</span></div>
+<!-- GAMES -->
+<section class="section">
   <div class="game-grid">
-    <!-- FREE FIRE -->
     <div class="game-card">
-      <div class="game-bg" style="background-image: url('https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?q=80&w=800&auto=format&fit=crop');"></div>
+      <div class="game-bg" style="background-image: url('https://i.ibb.co/3s6KqK1/garena-free-fire-png.png');"></div>
       <div class="game-info">
         <h3>FREE FIRE</h3>
-        <p>Hack - Skin - Antibạn - FPS Cao</p>
-        <a href="#downloads" class="small-btn">XEM NGAY ›</a>
+        <p>MOD FREE FIRE<br>Hack - Skin - Antibạn - FPS Cao</p>
+        <a href="#download" class="small-btn">XEM NGAY ›</a>
       </div>
     </div>
-    <!-- LIÊN QUÂN -->
     <div class="game-card">
-      <div class="game-bg" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop');"></div>
+      <div class="game-bg" style="background-image: url('https://i.ibb.co/68ZqXqz/pubg-character.png');"></div>
       <div class="game-info">
         <h3>LIÊN QUÂN</h3>
-        <p>Skin - Map Hack - Auto Aim</p>
-        <a href="#downloads" class="small-btn">XEM NGAY ›</a>
+        <p>MOD LIÊN QUÂN<br>Skin - Map Hack - Auto Aim</p>
+        <a href="#download" class="small-btn">XEM NGAY ›</a>
       </div>
     </div>
-    <!-- PUBG -->
     <div class="game-card">
       <div class="game-bg" style="background-image: url('https://images.unsplash.com/photo-1589241062272-c0a0e9d0cb45?q=80&w=800&auto=format&fit=crop');"></div>
       <div class="game-info">
         <h3>PUBG MOBILE</h3>
-        <p>ESP - Aimbot - No Recoil - 120FPS</p>
-        <a href="#downloads" class="small-btn">XEM NGAY ›</a>
+        <p>MOD PUBG MOBILE<br>ESP - Aimbot - No Recoil - 120FPS</p>
+        <a href="#download" class="small-btn">XEM NGAY ›</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- DOWNLOAD -->
-<section class="section" id="downloads">
+<section class="section" id="download">
   <div class="download-wrap">
-    <!-- CỘT TRÁI: DANH SÁCH LINK -->
-    <div class="download-box">
-      <h3>DOWNLOAD <span>LINKS</span></h3>
-      <div class="download-list">
-        <a href="https://appinstall.cloud/install-pro/mk4qwuhb1111" target="_blank" class="dl-row">
+    <div class="dl-box">
+      <div class="dl-title">DOWNLOAD <span style="color:var(--pink)">LINKS</span></div>
+      <div class="dl-sub">CHỌN PHIÊN BẢN PHÙ HỢP VÀ TẢI NGAY</div>
+      
+      <div class="dl-list">
+        <a href="https://appinstall.cloud/install-pro/mk4qwuhb1111" class="dl-row">
           <div class="dl-icon">🔥</div>
           <div class="dl-text"><strong>FREE FIRE MOD (APK)</strong><small>Hack, Skin, Auto Headshot</small></div>
-          <div class="dl-arrow">↓</div>
+          <div class="dl-size">~220MB</div><div class="dl-arrow">↓</div>
         </a>
-        <a href="https://appinstall.cloud/install-pro/27lpbuof4444" target="_blank" class="dl-row">
+        <a href="https://appinstall.cloud/install-pro/27lpbuof4444" class="dl-row">
           <div class="dl-icon">⚔️</div>
-          <div class="dl-text"><strong>ZORO + YONG MOD FULL SKIN</strong><small>Liên Quân Mobile</small></div>
-          <div class="dl-arrow">↓</div>
+          <div class="dl-text"><strong>LIÊN QUÂN MOD (APK)</strong><small>Zoro + Yong Mod Full Skin</small></div>
+          <div class="dl-size">~180MB</div><div class="dl-arrow">↓</div>
         </a>
-        <a href="https://appinstall.cloud/install-pro/2oszfmx66666" target="_blank" class="dl-row">
+        <a href="https://appinstall.cloud/install-pro/2oszfmx66666" class="dl-row">
           <div class="dl-icon">🛡️</div>
-          <div class="dl-text"><strong>CHẤP TỐ ĐỘC QUYỀN</strong><small>Liên Quân Mobile</small></div>
-          <div class="dl-arrow">↓</div>
+          <div class="dl-text"><strong>CHẤP TỐ ĐỘC QUYỀN</strong><small>Skin, Map Hack, Auto Aim</small></div>
+          <div class="dl-size">~200MB</div><div class="dl-arrow">↓</div>
         </a>
-        <a href="https://appinstall.cloud/install-pro/buddv1iv4444" target="_blank" class="dl-row">
+        <a href="https://appinstall.cloud/install-pro/buddv1iv4444" class="dl-row">
           <div class="dl-icon">👑</div>
-          <div class="dl-text"><strong>ZORO VIP CHẤP TỐ</strong><small>Liên Quân Mobile</small></div>
-          <div class="dl-arrow">↓</div>
+          <div class="dl-text"><strong>ZORO VIP CHẤP TỐ</strong><small>Skin, Map Hack, Auto Aim</small></div>
+          <div class="dl-size">~200MB</div><div class="dl-arrow">↓</div>
         </a>
-        <a href="https://appinstall.cloud/install-pro/pklbyzh25555" target="_blank" class="dl-row">
+        <a href="https://appinstall.cloud/install-pro/pklbyzh25555" class="dl-row">
           <div class="dl-icon">🦇</div>
-          <div class="dl-text"><strong>DRACULA</strong><small>Liên Quân Mobile</small></div>
-          <div class="dl-arrow">↓</div>
+          <div class="dl-text"><strong>DRACULA</strong><small>Skin, Map Hack</small></div>
+          <div class="dl-size">~180MB</div><div class="dl-arrow">↓</div>
         </a>
-        <a href="https://appinstall.cloud/install-pro/fmdanift9999" target="_blank" class="dl-row">
+        <a href="https://appinstall.cloud/install-pro/fmdanift9999" class="dl-row">
           <div class="dl-icon">🎯</div>
-          <div class="dl-text"><strong>DRACULA PRO 4.6</strong><small>PUBG Mobile</small></div>
-          <div class="dl-arrow">↓</div>
+          <div class="dl-text"><strong>PUBG MOBILE MOD (APK)</strong><small>Dracula Pro 4.6 - ESP, Aimbot</small></div>
+          <div class="dl-size">~250MB</div><div class="dl-arrow">↓</div>
         </a>
-        <a href="https://appinstall.cloud/install-pro/hecoiwc02222" target="_blank" class="dl-row">
+        <a href="https://appinstall.cloud/install-pro/hecoiwc02222" class="dl-row">
           <div class="dl-icon">💎</div>
-          <div class="dl-text"><strong>PUBG LUXURY</strong><small>PUBG Mobile</small></div>
-          <div class="dl-arrow">↓</div>
+          <div class="dl-text"><strong>PUBG LUXURY</strong><small>ESP, Aimbot, No Recoil</small></div>
+          <div class="dl-size">~240MB</div><div class="dl-arrow">↓</div>
         </a>
       </div>
     </div>
 
-    <!-- CỘT PHẢI: THÔNG TIN -->
-    <div class="support-panel">
-      <div class="support-item">
-        <div class="support-icon">🛡️</div>
-        <b>AN TOÀN</b>
-        <p>Không chứa mã độc, virus đã được kiểm tra kỹ lưỡng.</p>
+    <div class="support-box">
+      <div class="sup-item">
+        <div class="sup-icon">🛡️</div>
+        <div class="sup-text">
+          <b>AN TOÀN</b>
+          <p>Không chứa mã độc, virus đã được kiểm tra kỹ lưỡng.</p>
+        </div>
       </div>
-      <div class="support-item">
-        <div class="support-icon">⚡</div>
-        <b>CẬP NHẬT LIÊN TỤC</b>
-        <p>Luôn có bản mới nhất, fix lỗi, tối ưu hiệu năng.</p>
+      <div class="sup-item">
+        <div class="sup-icon">⚡</div>
+        <div class="sup-text">
+          <b>CẬP NHẬT LIÊN TỤC</b>
+          <p>Luôn có bản mới nhất, fix lỗi, tối ưu hiệu năng.</p>
+        </div>
       </div>
-      <div class="support-item">
-        <div class="support-icon">💬</div>
-        <b>HỖ TRỢ 24/7</b>
-        <p>Giải đáp thắc mắc, hỗ trợ nhanh chóng qua kênh Telegram.</p>
-        <a href="https://t.me/lvhgamre" target="_blank" class="small-btn" style="margin-top:15px; display:inline-block;">MỞ TELEGRAM ↗</a>
+      <div class="sup-item">
+        <div class="sup-icon">💬</div>
+        <div class="sup-text">
+          <b>HỖ TRỢ 24/7</b>
+          <p>Giải đáp thắc mắc, hỗ trợ nhanh chóng qua kênh liên hệ.</p>
+        </div>
+      </div>
+      <div class="sup-item">
+        <div class="sup-icon">👑</div>
+        <div class="sup-text">
+          <b>HOÀN TOÀN MIỄN PHÍ</b>
+          <p>Tất cả mod đều free 100%, không cần trả phí.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="logo">304<span>GAMER</span></div>
-  <div>CHƠI GAME LÀ PHẢI CHẤT!</div>
-  <div>© 2026 304GAMER</div>
-</footer>
-
-<!-- POPUP NHẠC -->
-<div class="popup-overlay" id="musicPopup">
-  <div class="popup-box">
-    <div style="font-size:40px; color:var(--pink);">♫</div>
-    <h2>BẬT NHẠC NỀN</h2>
-    <p>Nhấn ĐÓNG để vào website và bật nhạc nền.</p>
-    <button class="btn" style="width:100%;" onclick="closePopup()">ĐÓNG ✕</button>
+  <div class="logo">304<span>GAMER</span><br><span style="font-size: 12px; color: #aaa; font-style: normal;">CHƠI GAME LÀ PHẢI CHẤT!</span></div>
+  <div>
+    <p style="text-align: center; margin-bottom: 10px; font-size: 12px; color: #aaa;">KẾT NỐI VỚI CHÚNG TÔI</p>
+    <div class="socials">
+      <span>🎵</span><span>▶️</span><span>f</span><span>💬</span>
+    </div>
   </div>
-</div>
-
-<audio id="bgMusic" loop preload="none">
-  <source src="https://pomf2.lain.la/f/06j5rzj2.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-  const audio = document.getElementById('bgMusic');
-  const popup = document.getElementById('musicPopup');
-  const musicBtn = document.getElementById('musicBtn');
-
-  function closePopup() {
-    popup.classList.add('hidden');
-    audio.play().then(() => {
-      musicBtn.textContent = '🔇';
-    }).catch(e => {
-      console.log('Trình duyệt chặn autoplay');
-    });
-  }
-
-  musicBtn.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play();
-      musicBtn.textContent = '🔇';
-    } else {
-      audio.pause();
-      musicBtn.textContent = '🔊';
-    }
-  });
-</script>
+  <div style="text-align: right; font-size: 12px; color: #aaa;">
+    "Game không chỉ là giải trí,<br>mà còn là đam mê!"<br>
+    <b style="color: var(--pink);">- 304GAMER -</b>
+  </div>
+</footer>
 
 </body>
 </html>
